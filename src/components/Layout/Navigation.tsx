@@ -13,6 +13,7 @@ import locations from '../../utils/locations'
 import Link from '../Common/Typography/Link'
 import Dot from '../Icon/Dot'
 import SearchInput from '../Search/SearchInput'
+import SearchInputMobile from '../Search/SearchInputMobile'
 
 import './Navigation.css'
 
@@ -122,9 +123,7 @@ const Navigation = ({ activeTab }: NavigationProps) => {
         </NotMobile>
       </Tabs>
       <Mobile>
-        <div className="Navigation__SearchInput">
-          <SearchInput />
-        </div>
+        <SearchInputMobile />
       </Mobile>
     </div>
   )

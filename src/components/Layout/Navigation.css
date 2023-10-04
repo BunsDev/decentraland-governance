@@ -1,3 +1,7 @@
+.Navigation {
+  position: relative;
+}
+
 .Navigation .dcl.tab svg {
   margin-left: 4px;
   vertical-align: middle;
@@ -39,6 +43,9 @@
     display: flex;
   }
 
+  .Navigation .dcl.tab {
+    padding-bottom: 5px;
+  }
   .Navigation .dcl.tab.active {
     border-bottom: 3px solid var(--primary);
     border-left: 0;
@@ -85,7 +92,8 @@
   padding-left: 0;
 }
 
-/* TODO: Implement mobile search input */
 .Navigation__SearchInput {
-  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

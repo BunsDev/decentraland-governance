@@ -1,9 +1,6 @@
-import React from 'react'
-
 import classNames from 'classnames'
 import { Back } from 'decentraland-ui/dist/components/Back/Back'
 import { Header } from 'decentraland-ui/dist/components/Header/Header'
-import { useMobileMediaQuery } from 'decentraland-ui/dist/components/Media/Media'
 
 import useFormatMessage from '../../hooks/useFormatMessage'
 import { useProposalsSearchParams } from '../../hooks/useProposalsSearchParams'
@@ -11,14 +8,12 @@ import locations, { navigate } from '../../utils/locations'
 
 import './SearchTitle.css'
 
-export function SearchTitle() {
+export default function SearchTitle() {
   const t = useFormatMessage()
   const { search } = useProposalsSearchParams()
-  const isMobile = useMobileMediaQuery()
 
   return (
     <>
-      {search && isMobile && <hr className={'SearchTitle__Separator'} />}
       {search && (
         <div className={'SearchTitle'}>
           <div className={'SearchTitle__Container'}>
