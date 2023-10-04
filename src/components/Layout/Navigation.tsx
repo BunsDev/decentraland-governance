@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import useAuthContext from 'decentraland-gatsby/dist/context/Auth/useAuthContext'
 import { Button } from 'decentraland-ui/dist/components/Button/Button'
-import { useMobileMediaQuery } from 'decentraland-ui/dist/components/Media/Media'
+import { Mobile, NotMobile, useMobileMediaQuery } from 'decentraland-ui/dist/components/Media/Media'
 import { Popup } from 'decentraland-ui/dist/components/Popup/Popup'
 import { Tabs } from 'decentraland-ui/dist/components/Tabs/Tabs'
 
@@ -80,7 +80,7 @@ const Navigation = ({ activeTab }: NavigationProps) => {
             <Link href={locations.profile({ address: user })}>
               <Popup
                 style={{ zIndex: 1000 }}
-                className="NavigationProfilePopUp"
+                className="Navigation__ProfilePopUp"
                 content={
                   <div>
                     <p>{t('navigation.profile_pop_up.label')}</p>
@@ -115,10 +115,17 @@ const Navigation = ({ activeTab }: NavigationProps) => {
             </Link>
           )}
         </Tabs.Left>
-        <Tabs.Right>
-          <SearchInput />
-        </Tabs.Right>
+        <NotMobile>
+          <Tabs.Right>
+            <SearchInput />
+          </Tabs.Right>
+        </NotMobile>
       </Tabs>
+      <Mobile>
+        <div className="Navigation__SearchInput">
+          <SearchInput />
+        </div>
+      </Mobile>
     </div>
   )
 }

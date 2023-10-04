@@ -4,25 +4,22 @@ import { useLocation } from '@reach/router'
 import classNames from 'classnames'
 import { Close } from 'decentraland-ui/dist/components/Close/Close'
 
-import { useBurgerMenu } from '../../hooks/useBurgerMenu'
 import useFormatMessage from '../../hooks/useFormatMessage'
 import { useProposalsSearchParams } from '../../hooks/useProposalsSearchParams'
 
 import { handleSearch } from './SearchInput'
 import './SearchInputMobile.css'
 
+// TODO: Is this component necessary?
+
 export default function SearchInputMobile(props: React.HTMLAttributes<HTMLDivElement>) {
   const t = useFormatMessage()
   const location = useLocation()
-  const { search, searching } = useProposalsSearchParams()
+  const { search } = useProposalsSearchParams()
   const searchInput = useRef<HTMLInputElement>(null)
   const [open, setOpen] = useState(false)
   const [searchText, setSearchText] = useState(() => search || '')
   const [placeholder, setPlaceholder] = useState(t('navigation.search.mobile.placeholder') || '')
-  const burgerMenu = useBurgerMenu()
-  useEffect(() => {
-    burgerMenu?.setStatus((prev) => ({ ...prev, searching: searching }))
-  }, [searching])
 
   function focusSearch() {
     searchInput.current?.focus()
