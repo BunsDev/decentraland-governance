@@ -7,7 +7,6 @@ import useFormatMessage from '../../hooks/useFormatMessage'
 import { useProposalsSearchParams } from '../../hooks/useProposalsSearchParams'
 import locations, { navigate } from '../../utils/locations'
 import Cross from '../Icon/Cross'
-import Magnify from '../Icon/Magnifiy'
 
 import './SearchInputMobile.css'
 
@@ -35,7 +34,7 @@ export default function SearchInputMobile() {
 
   const focusSearch = () => {
     setTimeout(() => {
-      searchInput.current?.setAttribute('autofocus', 'autofocus')
+      searchInput.current?.focus()
       searchInput.current?.click()
     }, 500)
   }
@@ -83,26 +82,22 @@ export default function SearchInputMobile() {
 
   return (
     <div className={classNames('SearchInputMobile', open && 'SearchInputMobile--open')}>
-      <button className="SearchInputMobile__Button" onClick={handleOpen}>
-        <Magnify />
-      </button>
-      <input
-        className={classNames('SearchInputMobile__Input', open && 'SearchInputMobile__Input--open')}
-        value={searchText}
-        placeholder={t('navigation.search.placeholder') || ''}
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
-        onKeyUp={keyUpHandler}
-        onFocus={() => setOpen(true)}
-        // onBlur={() => setOpen(!!searchText)}
-        ref={searchInput}
-      />
-      <Cross
-        size="14"
-        color="var(--black-800)"
-        className={classNames('SearchInputMobile__Icon', open && 'SearchInputMobile__Icon--open')}
-        onClick={handleClear}
-      />
+      <div className="SearchInputMobile__Container">
+        <input
+          className={classNames('SearchInputMobile__Input', open && 'SearchInputMobile__Input--open')}
+          value={searchText}
+          placeholder={t('navigation.search.placeholder') || ''}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          onKeyUp={keyUpHandler}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(!!searchText)}
+          ref={searchInput}
+        />
+        {open && (
+          <Cross className="SearchInputMobile__CloseIcon" size="14" color="var(--black-800)" onClick={handleClear} />
+        )}
+      </div>
     </div>
   )
 }
