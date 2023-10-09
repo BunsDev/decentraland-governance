@@ -4,6 +4,7 @@
   align-content: stretch;
   position: relative;
   padding: 16px 16px 16px 20px;
+  margin-top: 24px;
   margin-bottom: 8px;
   border-radius: 12px;
   outline: 1px solid #0000000a;
@@ -71,6 +72,7 @@
 
 @media (min-width: 768px) {
   .Banner {
+    margin-top: 0;
     margin-bottom: 35px;
   }
 
